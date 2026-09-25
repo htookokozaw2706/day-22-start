@@ -1,30 +1,38 @@
 from turtle import Screen, Turtle
+from paddle import Paddle
 
 screen = Screen()
 screen.setup(width=800, height=600)
 screen.bgcolor("black")
+screen.tracer(0)
 
-tim = Turtle()
+l_paddle = Paddle()
+r_paddle = Paddle()
 
-tim.shape("square")
-tim.color("white")
-tim.shapesize(stretch_wid=5,stretch_len=1)
-tim.penup()
-tim.speed(0.1)
-tim.goto(x=350, y=0)
+l_paddle.goto(350,0)
+r_paddle.goto(-350,0)
 
-def go_up():
-    new_y = tim.ycor() + 20
-    tim.goto(tim.xcor(), new_y)
 
-def go_down():
-    new_y = tim.ycor() - 20
-    tim.goto(tim.xcor(), new_y)
 
+
+l_paddle.go_up()
+l_paddle.go_down()
 
 screen.listen()
-screen.onkey(go_up(), "Up")
-screen.onkey(go_down(), "Down")
+screen.onkey(l_paddle.go_up,"Up")
+screen.onkey(l_paddle.go_down,"Down")
+
+r_paddle.go_up()
+r_paddle.go_down()
+
+screen.listen()
+screen.onkey(r_paddle.go_up,"w")
+screen.onkey(r_paddle.go_down,"s")
+
+game_is_on = True
+
+while game_is_on:
+    screen.update()
 
 
 
