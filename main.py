@@ -35,7 +35,7 @@ screen.onkey(r_paddle.go_down,"s")
 game_is_on = True
 
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move_ball()
 
@@ -47,9 +47,11 @@ while game_is_on:
 
     if ball.xcor()>388 : 
         ball.ball_reset()
+        score.r_point()
 
     if ball.xcor() < -388:
         ball.ball_reset()
+        score.l_point()
 
 
 
